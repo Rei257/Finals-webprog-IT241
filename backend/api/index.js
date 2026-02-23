@@ -22,5 +22,4 @@ async function createNestServer(expressInstance) {
 }
 createNestServer(server);
 exports.default = server;
-exports.default = server;
 //# sourceMappingURL=index.js.map

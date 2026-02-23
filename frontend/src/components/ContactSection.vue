@@ -77,7 +77,46 @@
             </div>
             <span class="ml-2">contact_form.sh</span>
           </div>
-          <ContactForm />
+          <ContactForm @messageSent="loadMessages" />
+        </div>
+      </div>
+
+      <!-- Messages Section -->
+      <div class="mt-12">
+        <h3 class="text-lg font-bold text-gray-100 mb-6 flex items-center gap-2">
+          <MessageSquare class="w-5 h-5 text-neon-blue" />
+          <span class="text-neon-blue">//</span> Messages
+        </h3>
+
+        <!-- Loading -->
+        <div v-if="loadingMessages" class="text-center text-gray-500 text-sm py-8">
+          Loading messages...
+        </div>
+
+        <!-- No messages -->
+        <div v-else-if="messages.length === 0" class="text-center text-gray-500 text-sm py-8">
+          No messages yet. Be the first to send one!
+        </div>
+
+        <!-- Messages list -->
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            v-for="msg in messages"
+            :key="msg.id"
+            class="bg-terminal-surface border border-terminal-border rounded-lg p-5 hover:border-neon-blue/50 transition-all duration-300"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 flex items-center justify-center rounded-full bg-neon-pink/10 border border-neon-pink/30 text-neon-pink text-xs font-bold uppercase">
+                {{ msg.name?.charAt(0) || '?' }}
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-gray-200">{{ msg.name }}</p>
+                <p class="text-xs text-gray-500">{{ msg.email }}</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">{{ msg.content }}</p>
+            <p class="text-xs text-gray-600 mt-3">{{ formatDate(msg.created_at) }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +124,37 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import { MessageSquare, Mail, MapPin, Github } from 'lucide-vue-next';
 import SectionHeader from './SectionHeader.vue';
 import ContactForm from './ContactForm.vue';
+import { fetchMessages } from '../services/api';
+
+const messages = ref([]);
+const loadingMessages = ref(false);
+
+async function loadMessages() {
+  loadingMessages.value = true;
+  try {
+    messages.value = await fetchMessages();
+  } catch (e) {
+    console.error('Failed to load messages:', e);
+  } finally {
+    loadingMessages.value = false;
+  }
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+onMounted(loadMessages);
 </script>

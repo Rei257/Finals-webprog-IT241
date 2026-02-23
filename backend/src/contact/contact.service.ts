@@ -15,6 +15,25 @@ export class ContactService {
   constructor(private readonly supabaseService: SupabaseService) {}
 
   /**
+   * Retrieves all messages from the database, newest first.
+   */
+  async getMessages() {
+    const supabase = this.supabaseService.getClient();
+
+    const { data, error } = await supabase
+      .from('messages')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      this.logger.error(`Failed to fetch messages: ${error.message}`);
+      throw new Error(error.message);
+    }
+
+    return data;
+  }
+
+  /**
    * Persists a contact form submission to the database.
    */
   async saveMessage(dto: CreateMessageDto) {

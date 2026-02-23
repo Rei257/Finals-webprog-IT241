@@ -104,6 +104,8 @@ import { ref, reactive } from 'vue';
 import { Send, Loader2, CheckCircle2, AlertTriangle } from 'lucide-vue-next';
 import { sendMessage } from '../services/api';
 
+const emit = defineEmits(['messageSent']);
+
 /** Form model bound via v-model */
 const form = reactive({
   name: '',
@@ -127,6 +129,7 @@ async function handleSubmit() {
   try {
     await sendMessage({ ...form });
     success.value = true;
+    emit('messageSent');
 
     // Reset form after successful submission
     form.name = '';

@@ -47,6 +47,11 @@ CREATE POLICY "Allow public insert on messages"
   ON messages FOR INSERT
   WITH CHECK (true);
 
+-- Allow anonymous reads on messages (display comments)
+CREATE POLICY "Allow public read on messages"
+  ON messages FOR SELECT
+  USING (true);
+
 -- ----------------------------------------------------------
 -- SEED DATA (Optional — remove for production)
 -- ----------------------------------------------------------

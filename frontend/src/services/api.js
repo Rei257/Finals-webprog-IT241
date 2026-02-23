@@ -35,4 +35,13 @@ export async function sendMessage(payload) {
   return data;
 }
 
+/**
+ * Fetch all contact messages from the backend.
+ * @returns {Promise<Array>} Array of message objects.
+ */
+export async function fetchMessages() {
+  const { data } = await api.get('/contact');
+  return data;
+}
+
 export default api;

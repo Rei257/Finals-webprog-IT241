@@ -7,6 +7,7 @@
 import {
   Controller,
   Post,
+  Get,
   Body,
   HttpException,
   HttpStatus,
@@ -17,6 +18,22 @@ import { CreateMessageDto } from './dto/create-message.dto';
 @Controller('contact')
 export class ContactController {
   constructor(private readonly contactService: ContactService) {}
+
+  /**
+   * GET /contact
+   * Returns all stored messages, newest first.
+   */
+  @Get()
+  async findAll() {
+    try {
+      return await this.contactService.getMessages();
+    } catch (error) {
+      throw new HttpException(
+        'Failed to retrieve messages.',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 
   /**
    * POST /contact
