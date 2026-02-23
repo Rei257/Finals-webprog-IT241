@@ -1,7 +1,5 @@
 # Cyberpunk Terminal — Personal Portfolio
 
-> A full-stack personal portfolio with a **Cyberpunk Terminal** aesthetic.  
-> Built with **Vue 3 + Tailwind CSS** (frontend) and **NestJS + Supabase** (backend), deployed on **Vercel**.
 
 ---
 
@@ -96,11 +94,28 @@ VITE_API_BASE_URL=http://localhost:3000
 
 ---
 
-## Deployment Guide (Vercel)
+## Tables
 
-See the `DEPLOYMENT.md` file for a full step-by-step guide on deploying to Vercel from GitHub.
+### `projects`
+| Column       | Type           | Description                     |
+|--------------|----------------|---------------------------------|
+| `id`         | UUID (PK)      | Auto-generated primary key      |
+| `title`      | VARCHAR(255)   | Project title                   |
+| `description`| TEXT           | Project description             |
+| `tech_stack` | TEXT[]         | Array of technology names       |
+| `link`       | VARCHAR(500)   | External URL (GitHub / demo)    |
+| `image_url`  | VARCHAR(500)   | Optional thumbnail URL          |
+| `created_at` | TIMESTAMPTZ    | Auto-set creation timestamp     |
 
----
+### `messages`
+| Column       | Type           | Description                     |
+|--------------|----------------|---------------------------------|
+| `id`         | UUID (PK)      | Auto-generated primary key      |
+| `name`       | VARCHAR(255)   | Sender's name                   |
+| `email`      | VARCHAR(255)   | Sender's email                  |
+| `content`    | TEXT           | Message body                    |
+| `created_at` | TIMESTAMPTZ    | Auto-set creation timestamp     |
+
 
 ## License
 
