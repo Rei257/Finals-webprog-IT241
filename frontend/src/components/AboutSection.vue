@@ -99,8 +99,8 @@ const techCategories = [
 
 /** Quick Stats */
 const stats = [
-  { value: '10+', label: 'Projects' },
-  { value: '5+', label: 'Technologies' },
-  { value: '4th', label: 'Year Student' },
+  { value: '5', label: 'Projects' },
+  { value: '2', label: 'Devices' },
+  { value: '2nd', label: 'Year Student' },
 ];
 </script>
