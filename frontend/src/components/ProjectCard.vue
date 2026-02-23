@@ -15,6 +15,27 @@
       class="h-1 bg-gradient-to-r from-neon-pink to-neon-blue opacity-50 group-hover:opacity-100 transition-opacity duration-500"
     ></div>
 
+    <!-- Project Screenshot(s) -->
+    <div v-if="project.images && project.images.length" class="overflow-hidden">
+      <div :class="project.images.length > 1 ? 'grid grid-cols-2' : ''">
+        <img
+          v-for="(img, index) in project.images"
+          :key="index"
+          :src="img"
+          :alt="project.title + ' screenshot ' + (index + 1)"
+          class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+        />
+      </div>
+    </div>
+    <!-- Single image fallback -->
+    <div v-else-if="project.image" class="overflow-hidden">
+      <img
+        :src="project.image"
+        :alt="project.title"
+        class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+      />
+    </div>
+
     <div class="p-5 sm:p-6">
       <!-- Header row: icon + title -->
       <div class="flex items-start gap-3 mb-3">

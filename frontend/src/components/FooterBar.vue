@@ -10,9 +10,9 @@
       <div class="h-px bg-gradient-to-r from-transparent via-neon-pink to-transparent mb-8"></div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <!-- Left: Terminal prompt -->
-        <div class="text-xs text-gray-500 font-mono">
-          <span class="text-neon-green">guest@portfolio</span>:<span class="text-neon-blue">~</span>$ echo "Thanks for visiting!"
+        <!-- Left: Message -->
+        <div class="text-xs text-gray-400 font-mono">
+          Thanks for visiting!
         </div>
 
         <!-- Center: Copyright -->

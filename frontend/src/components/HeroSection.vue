@@ -21,6 +21,18 @@
 
     <!-- Content -->
     <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <!-- Profile Image -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative group">
+          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-neon-pink via-neon-blue to-neon-green opacity-60 blur-md group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+          <img
+            :src="profileImage"
+            alt="John Carl Gabriel B. Guzman"
+            class="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full object-cover border-2 border-neon-blue/50 shadow-lg shadow-neon-blue/20"
+          />
+        </div>
+      </div>
+
       <!-- System status line -->
       <div
         class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-terminal-border bg-terminal-surface/60 text-xs uppercase tracking-widest text-gray-500"
@@ -46,16 +58,10 @@
         <span class="animate-blink border-r-2 border-neon-blue h-6 ml-1"></span>
       </div>
 
-      <!-- Terminal prompt -->
+      <!-- Skills display -->
       <div
         class="inline-block bg-terminal-surface border border-terminal-border rounded-lg px-6 py-4 text-left text-sm sm:text-base mb-10"
       >
-        <p class="text-gray-500 mb-1">
-          <span class="text-neon-green">guest@portfolio</span>:<span
-            class="text-neon-blue"
-            >~</span
-          >$ cat skills.txt
-        </p>
         <p class="text-gray-300">
           <span class="text-neon-pink">[</span> Vue.js
           <span class="text-gray-600">|</span> NestJS
@@ -103,6 +109,8 @@ import {
   Mail,
   ChevronsDown,
 } from 'lucide-vue-next';
+
+import profileImage from '../assets/images/jc (2).jpg';
 </script>
 
 <style scoped>

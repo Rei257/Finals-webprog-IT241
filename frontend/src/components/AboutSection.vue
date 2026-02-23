@@ -101,6 +101,6 @@ const techCategories = [
 const stats = [
   { value: '10+', label: 'Projects' },
   { value: '5+', label: 'Technologies' },
-  { value: '2026', label: 'Graduating' },
+  { value: '4th', label: 'Year Student' },
 ];
 </script>
