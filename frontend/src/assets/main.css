@@ -1,0 +1,123 @@
+/* ── Tailwind Directives ── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   GLOBAL CYBERPUNK STYLES
+   ============================================================ */
+
+/* ── Base Resets ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    scrollbar-width: thin;
+    scrollbar-color: #d946ef #080808;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d946ef;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background-color: #d946ef44;
+    color: #22d3ee;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ── CRT Scanline Overlay ──
+   Applied globally via a pseudo-element on the #app wrapper.
+   Creates subtle horizontal scan-lines over the entire viewport. */
+@layer components {
+  .crt-overlay {
+    position: relative;
+  }
+
+  .crt-overlay::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    animation: flicker 0.15s infinite;
+  }
+
+  .crt-overlay::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 60%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+  }
+}
+
+/* ── Neon Text Glow Utility ── */
+@layer utilities {
+  .text-glow-pink {
+    text-shadow: 0 0 7px #d946ef, 0 0 20px #d946ef55;
+  }
+  .text-glow-blue {
+    text-shadow: 0 0 7px #22d3ee, 0 0 20px #22d3ee55;
+  }
+  .text-glow-green {
+    text-shadow: 0 0 7px #4ade80, 0 0 20px #4ade8055;
+  }
+}
+
+/* ── Clipped Corner Mixin (45° corners) ── */
+@layer components {
+  .clip-corners {
+    clip-path: polygon(
+      16px 0%,
+      100% 0%,
+      100% calc(100% - 16px),
+      calc(100% - 16px) 100%,
+      0% 100%,
+      0% 16px
+    );
+  }
+  .clip-corners-sm {
+    clip-path: polygon(
+      10px 0%,
+      100% 0%,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0% 100%,
+      0% 10px
+    );
+  }
+}
+
+/* ── Keyframes (referenced from Tailwind config too) ── */
+@keyframes flicker {
+  0%, 100% { opacity: 0.97; }
+  50%      { opacity: 0.94; }
+}
