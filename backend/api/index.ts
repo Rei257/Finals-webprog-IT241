@@ -39,3 +39,4 @@ async function createNestServer(expressInstance: express.Express) {
 createNestServer(server);
 
 export default server;
+export default server;
