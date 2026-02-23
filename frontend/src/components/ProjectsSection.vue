@@ -53,12 +53,7 @@ import flutterMain from '../assets/images/projects/Flutter mainpage.png';
 import flutterProfile from '../assets/images/projects/Flutter profilepage.png';
 import arduinoImg from '../assets/images/projects/Arduino.png';
 
-/** Reactive state */
-const projects = ref(sampleProjects);
-const loading = ref(false);
-const error = ref(null);
-
-/** Fallback sample data for offline / demo usage */
+/** Local project data with screenshots */
 const sampleProjects = [
   {
     id: '1',
@@ -88,6 +83,11 @@ const sampleProjects = [
     link: '',
   },
 ];
+
+/** Reactive state */
+const projects = ref(sampleProjects);
+const loading = ref(false);
+const error = ref(null);
 
 /**
  * Projects are loaded from local data with screenshots.
