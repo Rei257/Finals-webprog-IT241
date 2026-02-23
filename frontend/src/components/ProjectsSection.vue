@@ -54,8 +54,8 @@ import flutterProfile from '../assets/images/projects/Flutter profilepage.png';
 import arduinoImg from '../assets/images/projects/Arduino.png';
 
 /** Reactive state */
-const projects = ref([]);
-const loading = ref(true);
+const projects = ref(sampleProjects);
+const loading = ref(false);
 const error = ref(null);
 
 /** Fallback sample data for offline / demo usage */
@@ -90,17 +90,17 @@ const sampleProjects = [
 ];
 
 /**
- * On mount, attempt to fetch projects from the API.
- * Falls back to sample data if the API call fails.
+ * Projects are loaded from local data with screenshots.
+ * To fetch from API instead, uncomment the onMounted block below.
  */
-onMounted(async () => {
-  try {
-    projects.value = await fetchProjects();
-  } catch (err) {
-    error.value = 'Could not connect to the backend API.';
-    projects.value = sampleProjects;
-  } finally {
-    loading.value = false;
-  }
-});
+// onMounted(async () => {
+//   try {
+//     projects.value = await fetchProjects();
+//   } catch (err) {
+//     error.value = 'Could not connect to the backend API.';
+//     projects.value = sampleProjects;
+//   } finally {
+//     loading.value = false;
+//   }
+// });
 </script>
