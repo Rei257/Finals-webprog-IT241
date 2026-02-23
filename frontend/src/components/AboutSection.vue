@@ -21,11 +21,11 @@
           </div>
           <div class="space-y-4 text-gray-300 text-sm sm:text-base leading-relaxed">
             <p>
-              Just a student at
-              <span class="text-neon-blue font-semibold">Asia Pacific College</span>
-              who loves <span class="text-neon-pink font-semibold">watching movies &amp; anime</span>,
-              reading <span class="text-neon-blue font-semibold">manga &amp; manhwa</span>,
-              and <span class="text-neon-pink font-semibold">playing online games</span>.
+              A <span class="text-neon-pink font-semibold">21-year-old</span> student from
+              <span class="text-neon-blue font-semibold">Asia Pacific College</span>.
+              I enjoy <span class="text-neon-pink font-semibold">watching movies and anime</span>,
+              the same way as I like reading <span class="text-neon-blue font-semibold">manga and manhwa</span>.
+              I also <span class="text-neon-pink font-semibold">play video games</span> during my free time.
             </p>
           </div>
         </div>
